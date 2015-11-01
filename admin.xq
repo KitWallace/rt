@@ -4,7 +4,7 @@ let $id := request:get-parameter("_id","")
 let $pin := request:get-parameter("_pin","")
 where $pin = $config:pin
 return
-let $doc := doc(concat("/db/apps/rt/streams/",$id,".xml"))/stream
+let $doc := doc(concat($config:streams,$id,".xml"))/stream
 let $action := request:get-parameter("_action","")
 let $result :=
   if ($action= "create")
