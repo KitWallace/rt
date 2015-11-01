@@ -14,7 +14,14 @@ let $result :=
              <data start="{$start}" end="{$last}">
                {$doc/data[position()>=$start]}
              </data>
-             
+        else if ($action="stats" and exists($doc))
+        then let $recs := count($doc/data)
+            let $last := $doc/data[last()]
+            return
+              <stats><number_records>{$recs}</number_records>
+              <last>{$last}</last>
+              </stats>
+  
         else <message>no action</message>
 return
     $result
