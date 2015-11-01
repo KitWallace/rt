@@ -3,7 +3,7 @@ import module namespace config = "http://kitwallace.me/rtconfig" at "/db/apps/rt
 let $id := request:get-parameter("_id","")
 
 return
-let $doc := doc(concat("/db/apps/rt/streams/",$id,".xml"))/stream
+let $doc := doc(concat($config:streams,$id,".xml"))/stream
 let $action := request:get-parameter("_action","")
 let $result :=
        if ($action="last" and exists($doc))
