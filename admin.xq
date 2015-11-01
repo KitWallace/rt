@@ -6,6 +6,7 @@ where $pin = $config:pin
 return
 let $doc := doc(concat($config:streams,$id,".xml"))/stream
 let $action := request:get-parameter("_action","")
+let $login := xmldb:login("/db/","dbaccess","wednesday")
 let $result :=
   if ($action= "create")
   then if (exists($doc))
